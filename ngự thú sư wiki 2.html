@@ -22,6 +22,16 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        /* Style cho nội dung mô tả dài */
+        .desc-content strong {
+            color: #60a5fa; /* blue-400 */
+        }
+        .desc-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body class="text-slate-200 selection:bg-blue-500/30 overflow-x-hidden relative min-h-screen p-4 md:p-8">
@@ -94,21 +104,120 @@
     </div>
 
     <script>
-// 1. DATA ĐÃ CẬP NHẬT TUỔI THỌ [cite: 10-70]
         const hierarchyData = [
             {
                 id: 1, category: 'power', title: 'Cảnh Giới Ngự Thú Sư', icon: 'users', color: 'bg-blue-900/30 border-blue-500/30',
                 steps: [
-                    { name: 'Phàm Giai', desc: 'Mới thức tỉnh, cơ thể cường hóa nhẹ. [Tuổi thọ: 100-120 tuổi]', extra: { label: 'Đặc điểm', value: 'Chưa thoát giới hạn phàm nhân' } },
-                    { name: 'Hắc Thiết', desc: 'Tinh thần lực nuôi dưỡng ngược lại cơ thể, làm chậm lão hóa. [Tuổi thọ: ~150 tuổi]', extra: { label: 'Sức mạnh', value: 'Nâng vật nặng 100kg bằng ý niệm' } },
-                    { name: 'Thanh Đồng', desc: 'Cơ thể đạt đỉnh cao người thường, duy trì rất lâu. [Tuổi thọ: ~200 tuổi]', extra: { label: 'Chiến lực', value: 'Đối đầu vũ khí nóng hạng nhẹ' } },
-                    { name: 'Bạch Ngân', desc: 'Linh hồn đủ mạnh để ảnh hưởng sự sống (Thiêu đốt Hồn Hỏa). [Tuổi thọ: ~300 tuổi]', extra: { label: 'Địa vị', value: 'Tinh anh trong quân đội' } },
-                    { name: 'Hồng Kim', desc: 'Bắt đầu quá trình "phi phàm hóa", tự chữa lành tổn thương nhỏ. [Tuổi thọ: ~500 tuổi]', extra: { label: 'Quyền hạn', value: 'Lãnh đạo cấp thành phố' } },
-                    { name: 'Lam Ngọc', desc: 'Sinh mệnh tính bằng thiên niên kỷ, là "lão quái vật". [Tuổi thọ: ~1,000 tuổi]', extra: { label: 'Sức mạnh', value: 'Phá hủy tòa nhà chọc trời' } },
-                    { name: 'Bạch Kim', desc: 'Được thiên địa ưu ái, dung mạo trẻ mãi không già. [Tuổi thọ: ~5,000 tuổi]', extra: { label: 'Danh hiệu', value: 'Tông Sư' } },
-                    { name: 'Kim Cương', desc: 'Hồn Hỏa hóa không gian riêng, chỉ chết khi chiến đấu. [Tuổi thọ: ~20,000 tuổi]', extra: { label: 'Quy mô', value: 'Trấn thủ quốc gia' } },
-                    { name: 'Ngân Nguyệt', desc: 'Cận Bất Tử. Cơ thể chỉ là vật chứa, sống qua nhiều thời đại. [Tuổi thọ: >50,000 tuổi]', extra: { label: 'Quyền năng', value: 'Thay đổi thời tiết cục bộ' } },
-                    { name: 'Diệu Nhật', desc: 'Sinh mệnh hòa làm một với Tinh Thần Lực (Năng lượng thuần túy). [Tuổi thọ: Bất Tử Lý Thuyết]', extra: { label: 'Tôn xưng', value: 'Thánh Nhân / Bán Thần' } }
+                    { 
+                        name: 'Phàm Giai', 
+                        desc: 'Mới thức tỉnh, cơ thể cường hóa nhẹ. Chưa thoát giới hạn phàm nhân. [Tuổi thọ: 100-120 tuổi]<br><br><strong>Nguyên lý:</strong> "Sự Thức Tỉnh & Tự Nhận Thức". Khai mở ý thức, tìm kiếm đốm lửa ấm áp trong tâm trí.<br><strong>Tu luyện:</strong> Minh Tưởng Cơ Bản.<br><strong>Thử thách:</strong> Ngưỡng Cửa Ý Thức - Biến tinh thần lực vô định thành sợi tơ hữu hình.', 
+                        extra: { label: 'Tinh Thần Lực', value: '10 - 100 Đơn vị' } 
+                    },
+                    { 
+                        name: 'Hắc Thiết', 
+                        desc: 'Tinh thần lực nuôi dưỡng ngược lại cơ thể, làm chậm lão hóa. Nâng vật nặng 100kg bằng ý niệm. [Tuổi thọ: ~150 tuổi]<br><br><strong>Nguyên lý:</strong> "Sự Liên Kết & Ổn Định". Tạo ra sợi dây kết nối hữu hình với sinh mệnh khác.<br><strong>Tu luyện:</strong> "Trấn Hồn" - Hình dung Hồn Hỏa như khối sắt đặc để chống lại xung kích từ thú.<br><strong>Thử thách:</strong> Thử Thách Dung Hợp - Giữ ổn định khi Hồn Hỏa hòa vào năng lượng Dị Thú.', 
+                        extra: { label: 'Tinh Thần Lực', value: '100 - 500 Đơn vị' } 
+                    },
+                    { 
+                        name: 'Thanh Đồng', 
+                        desc: 'Cơ thể đạt đỉnh cao người thường, duy trì rất lâu. Đối đầu vũ khí nóng hạng nhẹ. [Tuổi thọ: ~200 tuổi]<br><br><strong>Nguyên lý:</strong> "Sự Dẫn Dắt & Điều Khiển". Biến ý chí thành kênh dẫn chính xác.<br><strong>Tu luyện:</strong> "Dẫn Hỏa" - Hình dung và dẫn dắt Tinh Thần Lực chảy theo các mạch văn.<br><strong>Thử thách:</strong> Sơ Tâm Kiếp (Tâm Ma) - Đối mặt với câu hỏi "Tại sao muốn có sức mạnh?".', 
+                        extra: { label: 'Tinh Thần Lực', value: '500 - 2,000 Đơn vị' } 
+                    },
+                    { 
+                        name: 'Bạch Ngân', 
+                        desc: 'Linh hồn đủ mạnh để ảnh hưởng sự sống (Thiêu đốt Hồn Hỏa). Tinh anh trong quân đội. [Tuổi thọ: ~300 tuổi]<br><br><strong>Nguyên lý:</strong> "Sự Bùng Nổ & Tinh Lọc". Giải phóng năng lượng tiềm ẩn.<br><strong>Tu luyện:</strong> "Luyện Hỏa" - Dùng ý chí đốt cháy tạp niệm trong lò luyện Hồn Hỏa.<br><strong>Thử thách:</strong> Huyết Mạch Phản Phệ (Ngoại Kiếp) - Trấn áp bản năng hoang dã của Dị Thú.', 
+                        extra: { label: 'Tinh Thần Lực', value: '2,000 - 10,000 Đơn vị' } 
+                    },
+                    { 
+                        name: 'Hồng Kim', 
+                        desc: 'Bắt đầu quá trình "phi phàm hóa", tự chữa lành tổn thương nhỏ. Lãnh đạo cấp thành phố. [Tuổi thọ: ~500 tuổi]<br><br><strong>Nguyên lý:</strong> "Sự Cộng Hưởng & Thấu Hiểu". Liên kết tiến hóa thành cộng hưởng hai chiều.<br><strong>Tu luyện:</strong> "Giao Hưởng Song Hồn" - Đồng bộ tần số linh hồn với Dị Thú.<br><strong>Thử thách:</strong> Tẩy Tủy Luyện Hồn (Nội Kiếp) - Đau đớn tái tạo xương cốt và kinh mạch.', 
+                        extra: { label: 'Tinh Thần Lực', value: '10,000 - 50,000 Đơn vị' } 
+                    },
+                    { 
+                        name: 'Lam Ngọc', 
+                        desc: 'Sinh mệnh tính bằng thiên niên kỷ, là "lão quái vật". Sức mạnh phá hủy tòa nhà chọc trời. [Tuổi thọ: ~1,000 tuổi]<br><br><strong>Nguyên lý:</strong> "Sự Tinh Luyện & Quan Sát". Chuyển từ nội tu sang quan sát quy luật tự nhiên.<br><strong>Tu luyện:</strong> "Quan Thiên Địa" - Sao chép quy luật vận hành của bão tố, thủy triều vào linh hồn.<br><strong>Đặc điểm:</strong> Có thể bay lượn và tác động vật lý diện rộng.', 
+                        extra: { label: 'Tinh Thần Lực', value: '50,000 - 200,000 Đơn vị' } 
+                    },
+                    { 
+                        name: 'Bạch Kim', 
+                        desc: 'Được thiên địa ưu ái, dung mạo trẻ mãi không già. Danh hiệu Tông Sư. [Tuổi thọ: ~5,000 tuổi]<br><br><strong>Nguyên lý:</strong> "Bán Quy Tắc & Mô Phỏng". Bẻ cong quy luật vật lý bằng Tinh Thần Lực.<br><strong>Tu luyện:</strong> Can thiệp vào tự nhiên (ví dụ: làm suối chảy ngược).<br><strong>Thử thách (Vượt Long Môn):</strong><br>- Thiên Lôi Thối Thể (Ngoại Kiếp)<br>- Hồng Trần Luyện Tâm (Tâm Ma)<br>- Vấn Đạo Chi Môn (Hỏi về Đạo của bản thân).', 
+                        extra: { label: 'Tinh Thần Lực', value: '200,000 - 1 Triệu Đơn vị' } 
+                    },
+                    { 
+                        name: 'Kim Cương', 
+                        desc: 'Hồn Hỏa hóa không gian riêng, chỉ chết khi chiến đấu. Trấn thủ quốc gia. [Tuổi thọ: ~20,000 tuổi]<br><br><strong>Nguyên lý:</strong> "Sự Sáng Tạo". Biến hư thành thực, ý niệm hóa vật chất.<br><strong>Kỹ năng:</strong> "Ngôn Linh" & "Kiến Tạo Tâm Giới" (Tạo ra thế giới nội tại).<br><strong>Thử thách:</strong> Phá Giới Chi Kiếp - Thế giới thực phản kháng lại quy tắc của Tâm Giới.', 
+                        extra: { label: 'Tinh Thần Lực', value: '1 Triệu - 5 Triệu Đơn vị' } 
+                    },
+                    { 
+                        name: 'Ngân Nguyệt', 
+                        desc: 'Cận Bất Tử. Cơ thể chỉ là vật chứa, sống qua nhiều thời đại. Thay đổi thời tiết cục bộ. [Tuổi thọ: >50,000 tuổi]<br><br><strong>Nguyên lý:</strong> "Sự Thao Túng". Gảy lên những sợi tơ của vận mệnh và nhân quả bên ngoài.<br><strong>Tu luyện:</strong> "Chấp Chưởng Vận Mệnh" - Quan sát và tác động vào dòng chảy nhân quả.<br><strong>Thử thách:</strong> Hằng Tinh Chi Kiếp - Biến Hồn Hỏa thành hệ thống tự cân bằng hoàn hảo.', 
+                        extra: { label: 'Tinh Thần Lực', value: '5 Triệu - 50 Triệu Đơn vị' } 
+                    },
+                    { 
+                        name: 'Diệu Nhật', 
+                        desc: 'Sinh mệnh hòa làm một với Tinh Thần Lực (Năng lượng thuần túy). Tôn xưng Thánh Nhân / Bán Thần. [Tuổi thọ: Bất Tử Lý Thuyết]<br><br><strong>Nguyên lý:</strong> "Nguồn Cội Vĩnh Hằng". Hoàn thiện tuyệt đối quy tắc bên trong.<br><strong>Đặc điểm:</strong> Hồn Hỏa hóa thành "Diệu Nhật" - một hằng tinh năng lượng tự cung tự cấp vô hạn.<br><strong>Tu luyện:</strong> "Duy Trì Trật Tự" - Giữ cân bằng cho vũ trụ nội tại.', 
+                        extra: { label: 'Tinh Thần Lực', value: '> 50 Triệu (Vô hạn)' } 
+                    }
+                ]
+            },
+            {
+                id: 40, category: 'skills', title: 'Phân Loại Phẩm Chất Kỹ Năng Dị Thú', icon: 'sparkles', color: 'bg-fuchsia-900/30 border-fuchsia-500/30',
+                steps: [
+                    { 
+                        name: 'Phàm Giai Kỹ Năng', 
+                        desc: 'Các kỹ năng cơ bản nhất, gần như là bản năng sinh tồn. Uy lực thấp và hiệu quả đơn giản.<br><strong>Ví dụ:</strong> Cắn Xé, Va Chạm, Hù Dọa, Khạc Lửa Yếu.', 
+                        extra: { label: 'Độ hiếm', value: 'Phổ thông' } 
+                    },
+                    { 
+                        name: 'Thiết Giai Kỹ Năng', 
+                        desc: 'Kỹ năng chiến đấu tiêu chuẩn, có uy lực rõ ràng và bắt đầu mang đặc tính nguyên tố hoặc vật lý cụ thể.<br><strong>Ví dụ:</strong> Hỏa Cầu, Phong Nhận (Lưỡi đao gió), Nanh Độc, Thiết Hóa.', 
+                        extra: { label: 'Phù hợp', value: 'Hắc Thiết - Thanh Đồng' } 
+                    },
+                    { 
+                        name: 'Ngân Giai Kỹ Năng', 
+                        desc: 'Kỹ năng cao cấp mang tính chiến thuật, có khả năng tạo hiệu ứng phức tạp hoặc sát thương diện rộng. Yêu cầu huyết mạch thuần khiết nhất định.<br><strong>Ví dụ:</strong> Bão Lửa, Ma Âm (Tấn công tinh thần), Kịch Độc Ăn Mòn.', 
+                        extra: { label: 'Phù hợp', value: 'Bạch Ngân - Hồng Kim' } 
+                    },
+                    { 
+                        name: 'Kim Giai Kỹ Năng', 
+                        desc: 'Kỹ năng cực mạnh và hiếm, độc quyền của huyết mạch cao quý. Có khả năng thay đổi địa hình hoặc cục diện trận đấu.<br><strong>Ví dụ:</strong> Thiên Thạch Hỏa Vũ, Lôi Long Giáng Thế, Tuyệt Đối Linh Độ.', 
+                        extra: { label: 'Phù hợp', value: 'Lam Ngọc - Bạch Kim' } 
+                    },
+                    { 
+                        name: 'Diệu Giai Kỹ Năng', 
+                        desc: 'Cấp bậc truyền thuyết, chạm đến ngưỡng cửa "pháp tắc". Thể hiện quyền năng đối với quy luật tự nhiên.<br><strong>Ví dụ:</strong> Trọng Lực Không Gian, Thời Gian Ngưng Đọng, Sinh Mệnh Tước Đoạt.', 
+                        extra: { label: 'Phù hợp', value: 'Kim Cương' } 
+                    },
+                    { 
+                        name: 'Thánh Giai Kỹ Năng', 
+                        desc: 'Hiện thân của một "Đạo". Chỉ những tồn tại thần thoại như Côn Bằng mới sở hữu.<br><strong>Ví dụ:</strong> Thanh Tẩy Tinh Thần, Thế Giới Chuyển Dịch.', 
+                        extra: { label: 'Phù hợp', value: 'Ngân Nguyệt' } 
+                    },
+                    { 
+                        name: 'Thần Giai Kỹ Năng', 
+                        desc: 'Kỹ năng lý thuyết. Có thể sáng tạo hoặc hủy diệt thế giới. Quyền năng của các vị thần.', 
+                        extra: { label: 'Phù hợp', value: 'Diệu Nhật' } 
+                    }
+                ]
+            },
+            {
+                id: 41, category: 'skills', title: 'Nguyên Lý & Tầm Quan Trọng', icon: 'zap', color: 'bg-violet-900/30 border-violet-500/30',
+                steps: [
+                    { 
+                        name: 'Nguyên Lý Cốt Lõi', 
+                        desc: 'Kỹ năng là sự thức tỉnh của bản năng và di sản tổ tiên trong huyết quản, không phải học qua sách vở.<br><strong>Bản Mệnh Kỹ Năng:</strong> Tự động lĩnh ngộ khi trưởng thành/đột phá.<br><strong>Hậu Thiên Kỹ Năng:</strong> Lĩnh ngộ qua điều kiện bên ngoài (Thiên tài địa bảo, môi trường).', 
+                        extra: { label: 'Xúc tác', value: 'Tinh Thần Lực Ngự Thú Sư' } 
+                    },
+                    { 
+                        name: 'Vai Trò Chiến Lược', 
+                        desc: 'Giá trị Dị Thú nằm ở phẩm chất kỹ năng mà huyết mạch có thể thức tỉnh.<br>- <strong>Thước Đo Tiềm Năng:</strong> Dị Thú có Kim Giai Kỹ Năng được tranh đoạt gắt gao.<br>- <strong>Công Cụ Kiểm Soát:</strong> Tinh Thần Điện nắm giữ bí mật kích hoạt kỹ năng để kiểm soát Ngự Thú Sư.', 
+                        extra: { label: 'Nguy cơ', value: 'Thử nghiệm thất bại' } 
+                    },
+                    { 
+                        name: 'Thị Trường & Bí Mật', 
+                        desc: '- <strong>Bí Truyền Gia Tộc:</strong> Các gia tộc lớn có phương pháp riêng để kích hoạt Ngân Giai Kỹ Năng đặc thù.<br>- <strong>Chợ Đen:</strong> Buôn bán bí kíp không rõ nguồn gốc, thường dẫn đến tổn thương huyết mạch vĩnh viễn.', 
+                        extra: { label: 'Lưu ý', value: 'Cẩn trọng lừa đảo' } 
+                    }
                 ]
             },
             {
@@ -238,6 +347,7 @@
         const categories = [
             { id: 'all', label: 'Tất Cả', icon: 'menu' },
             { id: 'power', label: 'Sức Mạnh', icon: 'swords' },
+            { id: 'skills', label: 'Kỹ Năng', icon: 'sparkles' },
             { id: 'items', label: 'Vật Phẩm', icon: 'crown' },
             { id: 'rankings', label: 'Xếp Hạng', icon: 'trophy' },
             { id: 'rules', label: 'Quy Tắc', icon: 'shield' },
@@ -245,7 +355,7 @@
             { id: 'world', label: 'Thế Giới', icon: 'globe' },
         ];
 
-        // 2. LOGIC MÀU SẮC (Giữ nguyên từ code gốc) [cite: 3 - 18]
+        // 2. LOGIC MÀU SẮC (Giữ nguyên từ code gốc)
         const getRankStyle = (name) => {
             const n = name.toLowerCase();
             if (n.includes('phàm') || n.includes('học việc') || n.includes('binh sĩ') || n.includes('sơ khai') || n.includes('cấp 1') || n.includes('bề mặt')) return { bg: 'bg-stone-500/20', text: 'text-stone-300', border: 'border-stone-500/30', glow: 'shadow-stone-500/10', ring: 'ring-stone-500/50' };
@@ -344,7 +454,7 @@
             <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#0F1115] border-t border-l border-white/20 rotate-45 transform"></div>
             
             <h4 class="font-bold mb-2 ${style.text}">${step.name}</h4>
-            <p class="text-xs text-slate-300 leading-relaxed mb-3 border-b border-white/5 pb-2">${step.desc}</p>
+            <p class="text-xs text-slate-300 leading-relaxed mb-3 border-b border-white/5 pb-2 line-clamp-4">${step.desc.replace(/<br>/g, ' ')}</p>
             ${step.extra ? `
                 <div class="flex items-center gap-2 text-xs bg-white/5 p-2 rounded border border-white/5">
                     <span class="text-slate-400 font-semibold uppercase text-[10px]">${step.extra.label}:</span>
@@ -388,15 +498,17 @@
                 <div class="space-y-6">
                     <div class="bg-black/20 p-4 rounded-xl border border-white/5">
                         <h4 class="flex items-center gap-2 text-sm font-bold text-slate-300 mb-2 uppercase tracking-wide">
-                            <i data-lucide="book-open" class="w-4 h-4 text-blue-400"></i> Mô tả
+                            <i data-lucide="book-open" class="w-4 h-4 text-blue-400"></i> Chi tiết
                         </h4>
-                        <p class="text-slate-300 leading-relaxed text-base">${step.desc}</p>
+                        <div class="text-slate-300 leading-relaxed text-base desc-content">
+                            ${step.desc}
+                        </div>
                     </div>
 
                     ${step.extra ? `
                         <div class="bg-gradient-to-br from-white/5 to-transparent p-4 rounded-xl border border-white/10">
                             <h4 class="flex items-center gap-2 text-sm font-bold text-yellow-500 mb-2 uppercase tracking-wide">
-                                <i data-lucide="star" class="w-4 h-4"></i> Thông tin đặc biệt
+                                <i data-lucide="zap" class="w-4 h-4"></i> Thông tin bổ sung
                             </h4>
                             <div class="flex flex-col gap-1">
                                 <span class="text-slate-400 text-xs uppercase font-semibold">${step.extra.label}</span>
